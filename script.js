@@ -10,6 +10,7 @@ for (let i = 0; i < 256; i++) {
 
 const grid = document.querySelectorAll(".grid");
 
+// Adds functionality for user to sketch in black.
 function sketchBlack() {
     grid.forEach(function(element) {
         element.addEventListener("mouseover", function() {
@@ -18,4 +19,10 @@ function sketchBlack() {
     });
 }
 
+function getRandomRGB() {
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+    return `rgb(${red}, ${green}, ${blue})`;
+}
 sketchBlack()

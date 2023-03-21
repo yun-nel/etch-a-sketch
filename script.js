@@ -9,6 +9,19 @@ for (let i = 0; i < 256; i++) {
     sketchContainer.appendChild(newDiv);
 }
 
+function updateGrid() {
+    slider.addEventListener("input", function() {
+        sketchContainer.innerHTML = "";
+
+        for (let i = 0; i < getNumberOfSquares(); i++) {
+            const newDiv = document.createElement("div");
+            newDiv.classList.add("grid");
+            sketchContainer.appendChild(newDiv);
+            newDiv.style.cssText = `width: calc(100% / ${slider.value}); height: calc(100% / ${slider.value});`
+        }
+    });
+}
+
 // Returns a randomised RGB value. 
 function getRandomRGB() {
     const red = Math.floor(Math.random() * 256);
@@ -41,9 +54,15 @@ function sketchRandom() {
 function showSliderValue() {
     slider.addEventListener("input", function() {
         sliderValue.textContent = `${this.value} x ${this.value}`;
+        return Math.pow(this.value, 2);
     })
 };
 
+function getNumberOfSquares() {
+    return Math.pow(slider.value, 2);
+}
+
 showSliderValue();
 sketchRandom();
+updateGrid();
 

@@ -2,13 +2,14 @@ const sketchContainer = document.querySelector(".grid-container");
 const slider = document.querySelector(".slider");
 const sliderValue = document.querySelector(".slider-value");
 
-// Creates 256 divs in the DOM.
+// Creates a 16x16 grid.
 for (let i = 0; i < 256; i++) {
     const newDiv = document.createElement("div");
     newDiv.classList.add("grid");
     sketchContainer.appendChild(newDiv);
 }
 
+// Updates the size of the grid based on changes in the slider value. Calls getNumberofSquares()
 function updateGrid() {
     slider.addEventListener("input", function() {
         sketchContainer.innerHTML = "";
@@ -58,6 +59,7 @@ function showSliderValue() {
     })
 };
 
+// Returns the slider value multiplied by itself. 
 function getNumberOfSquares() {
     return Math.pow(slider.value, 2);
 }

@@ -1,5 +1,6 @@
 const sketchContainer = document.querySelector(".grid-container");
-
+const slider = document.querySelector(".slider");
+const sliderValue = document.querySelector(".slider-value");
 
 // Creates 256 divs in the DOM.
 for (let i = 0; i < 256; i++) {
@@ -36,4 +37,13 @@ function sketchRandom() {
     });
 }
 
-sketchRandom()
+// Displays the current value of the grid slider on the webpage.
+function showSliderValue() {
+    slider.addEventListener("input", function() {
+        sliderValue.textContent = `${this.value} x ${this.value}`;
+    })
+};
+
+showSliderValue();
+sketchRandom();
+

@@ -10,8 +10,12 @@ for (let i = 0; i < 256; i++) {
 
 const grid = document.querySelectorAll(".grid");
 
-grid.forEach(function(element) {
-    element.addEventListener("mouseover", function() {
-        element.style.backgroundColor = "black"
+function sketchBlack() {
+    grid.forEach(function(element) {
+        element.addEventListener("mouseover", function() {
+            element.style.backgroundColor = "black"
+        });
     });
-});
+}
+
+sketchBlack()

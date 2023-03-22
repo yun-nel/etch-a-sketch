@@ -1,6 +1,9 @@
 const sketchContainer = document.querySelector(".grid-container");
 const slider = document.querySelector(".slider");
 const sliderValue = document.querySelector(".slider-value");
+const blackButton = document.querySelector(".color-black");
+const rgbButton = document.querySelector(".color-RGB");
+let colorChoice = "black";
 
 // Creates a 16x16 grid.
 for (let i = 0; i < 256; i++) {
@@ -22,8 +25,9 @@ function updateGrid() {
             sketchContainer.appendChild(newDiv);
             newDiv.style.cssText = `width: calc(100% / ${slider.value}); height: calc(100% / ${slider.value});`
         }
-    
-        sketchBlack();
+        
+        if (colorChoice === "black") sketchBlack();
+        else if (colorChoice === "random") sketchRandom();
     });
 }
 
@@ -70,6 +74,21 @@ function getNumberOfSquares() {
     return Math.pow(slider.value, 2);
 }
 
+
+// Selects sketch color based on button click and assigns coresponding color to colorChoice.
+function getColor() {
+    blackButton.addEventListener("click", function() {
+        sketchBlack();
+        colorChoice = "black";
+    });
+
+    rgbButton.addEventListener("click", function() {
+        sketchRandom();
+        colorChoice = "random";
+    });
+}
+
 showSliderValue();
 updateGrid();
 sketchBlack();
+getColor();

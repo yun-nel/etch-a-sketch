@@ -11,6 +11,8 @@ for (let i = 0; i < 256; i++) {
 
 // Updates the size of the grid based on changes in the slider value. Calls getNumberofSquares()
 function updateGrid() {
+    const grid = document.querySelectorAll(".grid");
+
     slider.addEventListener("input", function() {
         sketchContainer.innerHTML = "";
 
@@ -20,6 +22,8 @@ function updateGrid() {
             sketchContainer.appendChild(newDiv);
             newDiv.style.cssText = `width: calc(100% / ${slider.value}); height: calc(100% / ${slider.value});`
         }
+    
+        sketchBlack();
     });
 }
 
@@ -31,10 +35,10 @@ function getRandomRGB() {
     return `rgb(${red}, ${green}, ${blue})`;
 }
 
-const grid = document.querySelectorAll(".grid");
-
 // Adds functionality for user to sketch in black.
 function sketchBlack() {
+    const grid = document.querySelectorAll(".grid");
+
     grid.forEach(function(element) {
         element.addEventListener("mouseover", function() {
             element.style.backgroundColor = "black";
@@ -44,6 +48,8 @@ function sketchBlack() {
 
 // Adds functionality for user to sketch in random RGB values.
 function sketchRandom() {
+    const grid = document.querySelectorAll(".grid");
+
     grid.forEach(function(element) {
         element.addEventListener("mouseover", function() {
             element.style.backgroundColor = getRandomRGB()
@@ -65,6 +71,5 @@ function getNumberOfSquares() {
 }
 
 showSliderValue();
-sketchRandom();
 updateGrid();
-
+sketchBlack();
